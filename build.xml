@@ -1,0 +1,28 @@
+<project name="Calculator" default="build" basedir=".">
+  
+  <!-- Set up properties -->
+  <property name="src.dir" value="src" />
+  <property name="build.dir" value="build" />
+  <property name="output.dir" value="bin" />
+  
+  <!-- Define targets -->
+  <target name="clean">
+    <delete dir="${build.dir}" />
+    <delete dir="${output.dir}" />
+  </target>
+  
+  <target name="prepare">
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${output.dir}" />
+  </target>
+  
+  <target name="compile" depends="prepare">
+    <javac srcdir="${src.dir}" destdir="${build.dir}" />
+  </target>
+  
+  <target name="build" depends="compile">
+    <mkdir dir="${output.dir}" />
+    <jar destfile="${output.dir}/calculator.jar" basedir="${build.dir}" />
+  </target>
+  
+</project>
